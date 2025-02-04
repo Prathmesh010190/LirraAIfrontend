@@ -1,0 +1,134 @@
+import { Search } from "lucide-react"
+import Link from "next/link"
+
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
+export default function LearningPlatform() {
+  return (
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+        <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary/20 opacity-20 blur-[100px]" />
+        <div className="absolute right-[-20%] top-[-10%] -z-10 h-[400px] w-[400px] rounded-full bg-primary/20 opacity-20 blur-[100px]" />
+        <div className="absolute left-[-20%] top-[20%] -z-10 h-[300px] w-[300px] rounded-full bg-primary/20 opacity-20 blur-[100px]" />
+      </div>
+
+      <main className="container mx-auto px-4 py-8 space-y-8">
+        <div className="text-center space-y-6">
+          <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-b from-foreground to-muted-foreground bg-clip-text text-transparent">
+            What would you like to learn today?
+          </h1>
+          <div className="max-w-2xl mx-auto">
+            <div className="relative flex items-center">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+              <Input
+                placeholder="Search for tutorials, guides, and tools..."
+                className="pl-9 pr-24 h-12 bg-background/60 backdrop-blur-sm border-muted rounded-r-none"
+              />
+              <Button className="h-12 rounded-l-none">Search</Button>
+            </div>
+          </div>
+        </div>
+
+        <Tabs defaultValue="guides" className="justify-center">
+          <TabsList className="grid w-full max-w-2xl grid-cols-4 bg-background/60 backdrop-blur-sm">
+            <TabsTrigger value="guides">
+              <span className="flex items-center gap-2">Guides</span>
+            </TabsTrigger>
+            <TabsTrigger value="tools">
+              <span className="flex items-center gap-2">Tools</span>
+            </TabsTrigger>
+            <TabsTrigger value="videos">
+              <span className="flex items-center gap-2">Videos</span>
+            </TabsTrigger>
+            <TabsTrigger value="profile">
+              <span className="flex items-center gap-2">My Profile</span>
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          {/* Content Sections with Glass Effect */}
+          <section className="p-6 rounded-lg bg-background/60 backdrop-blur-sm border border-muted">
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <span className="text-blue-500">●</span> Popular Guides
+            </h2>
+            <ul className="space-y-3">
+              {["Getting Started", "Web Development", "Mobile Development", "Cloud Computing", "Machine Learning"].map(
+                (guide) => (
+                  <li key={guide}>
+                    <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                      {guide}
+                    </Link>
+                  </li>
+                ),
+              )}
+            </ul>
+          </section>
+
+          <section className="p-6 rounded-lg bg-background/60 backdrop-blur-sm border border-muted">
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <span className="text-blue-500">↗</span> Trending Questions
+            </h2>
+            <ul className="space-y-3">
+              {[
+                "How to create a website?",
+                "Best practices for React development",
+                "Getting started with TypeScript",
+                "Modern CSS techniques",
+              ].map((question) => (
+                <li key={question}>
+                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                    {question}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="p-6 rounded-lg bg-background/60 backdrop-blur-sm border border-muted">
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <span className="text-blue-500">⚡</span> Recommended Tools
+            </h2>
+            <ul className="space-y-3">
+              {["VS Code", "Git", "Docker", "Node.js", "React Developer Tools"].map((tool) => (
+                <li key={tool}>
+                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                    {tool}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
+
+        <footer className="flex flex-col sm:flex-row items-center justify-between pt-8 mt-8 border-t border-muted gap-4">
+          <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
+            <Button variant="link" size="sm" asChild>
+              <Link href="#">About</Link>
+            </Button>
+            <Button variant="link" size="sm" asChild>
+              <Link href="#">Contact</Link>
+            </Button>
+            <Button variant="link" size="sm" asChild>
+              <Link href="#">Privacy Policy</Link>
+            </Button>
+            <Button variant="link" size="sm" asChild>
+              <Link href="#">Submit Feedback</Link>
+            </Button>
+          </div>
+          <div className="flex gap-2">
+            <Button variant="outline" size="sm" className="bg-background/60 backdrop-blur-sm">
+              Log in
+            </Button>
+            <Button size="sm">Sign up</Button>
+          </div>
+        </footer>
+      </main>
+    </div>
+  )
+}
+
